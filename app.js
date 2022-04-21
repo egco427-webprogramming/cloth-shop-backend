@@ -17,7 +17,12 @@ const cors = require("cors");
 app.use(cors());
 
 const bodyParser = require("body-parser");
-
+app.use(bodyParser.json());
+app.use(
+    bodyParser.urlencoded({
+        extended: false,
+    })
+);
 
 
 //////////////////////////////////////////////////////////
@@ -31,7 +36,7 @@ app.post("/users/update/:id", userController.updateUser);
 app.get("/users", userController.getAllUsers);
 
 // get one user 
-app.get("/users:uid", userController.getOneUser);
+app.get("/users/:uid", userController.getOneUser);
 
 // login
 //app.get("/login", loginController);
@@ -44,7 +49,7 @@ app.get("/users:uid", userController.getOneUser);
 app.get("/items", itemController.getAllItems);
 
 // get one item 
-app.get("/items:name", itemController.getOneItem);
+app.get("/items/:name", itemController.getOneItem);
 
 // search item 
 app.get("/items/search/:category", itemController.searchItems);
@@ -60,7 +65,7 @@ app.get("/items/promotion", itemController.promotionItems);
 app.get("/carts", cartController.getAllCarts);
 
 // get one carts
-app.get("/carts:uid", cartController.getOneCart);
+app.get("/carts/:uid", cartController.getOneCart);
 
 // update carts
 app.post("/carts/update/:id", cartController.updateCart);
