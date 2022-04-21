@@ -3,10 +3,10 @@ const mongoose = require("mongoose");
 // db access depend on mongo atlas config
 const USERNAME = "admin";
 const PASSWORD = "1234";
-const DBNAME = "DatabaseName";
+const DBNAME = "ClothesShop";
 
 // copy from mongo atlas
-const MONGO_URI = `mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.5vyqm.mongodb.net/${DBNAME}?retryWrites=true&w=majority`;
+const MONGO_URI = `mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.co30r.mongodb.net/${DBNAME}?retryWrites=true&w=majority`;
 
 // if err occur
 function errHandle(err) {
