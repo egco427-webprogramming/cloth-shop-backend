@@ -38,6 +38,9 @@ app.get("/users", userController.getAllUsers);
 
 // get one user 
 app.get("/users/:uid", userController.getOneUser);
+
+// login
+app.post("/login", userController.login);
 //////////////////////////////////////////////////////////
 
 
