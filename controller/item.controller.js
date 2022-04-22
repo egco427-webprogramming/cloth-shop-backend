@@ -18,7 +18,7 @@ exports.getAllItems = function (req, res) {
 
 exports.getOneItem = function (req, res) {
     items.findOne({
-        name: req.params.name
+        _id: req.params.id
     }, function (err, item) {
         if (err) throw err
         console.log("getOneItem")
@@ -48,6 +48,20 @@ exports.promotionItems = function (req, res) {
     items.find({promotion: {$gt:0}}, null, query, function (err, item) {
         if (err) throw err
         console.log("promotionItems")
+        res.json(item)
+    })
+}
+
+exports.getAllItemInCart = function (req, res) {
+    var query = {
+        sort: {
+            _id: 1
+        }
+    }
+    items.find({ _id: { $in: req.body.arrayOfItem } }
+        , null, query, function (err, item) {
+        if (err) throw err
+        console.log("getAllItemInCart")
         res.json(item)
     })
 }
