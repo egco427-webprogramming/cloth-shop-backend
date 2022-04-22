@@ -66,3 +66,31 @@ exports.updateUser = function (req, res) {
         res.json(user)
     })
 }
+
+exports.login = function (req, res) {
+    users.findOne({
+        uid: req.body.uid
+    }, function (err, user) {
+        if (err) throw err
+        console.log("login")
+        if (user != null) {
+            res.json(user)
+        } else {
+            var data = {
+                "uid": req.body.uid,
+                "firstname": "",
+                "lastname": "",
+                "tel": "",
+                "adr": "",
+                "email": req.body.email
+            }
+            var newUser = new users(data)
+            console.log(data)
+            newUser.save(function (err, newuser) {
+                if (err) throw err
+                res.json(newuser)
+            })
+        }
+
+    })
+}
