@@ -22,7 +22,25 @@ exports.getOneUser = function (req, res) {
     }, function (err, user) {
         if (err) throw err
         console.log("getOneUser")
-        res.json(user)
+        if (user != null) {
+            res.json(user)
+        } else {
+            var data = {
+                "uid": req.params.uid,
+                "firstname": "",
+                "lastname": "",
+                "tel": "",
+                "adr": "",
+                "email": ""
+            }
+            var newUser = new users(data)
+            console.log(data)
+            newUser.save(function (err, newuser) {
+                if (err) throw err
+                res.json(newuser)
+            })
+        }
+
     })
 }
 

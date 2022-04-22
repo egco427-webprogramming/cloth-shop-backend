@@ -17,8 +17,7 @@ const userSchema = new Schema({
   lastname: { type: String },
   tel: { type: String },
   adr: { type: String },
-  email: { type: String },
-  history: [{ type: String}]
+  email: { type: String }
 });
 
 const cartSchema = new Schema({
@@ -36,4 +35,4 @@ const historySchema = new Schema({
 module.exports = mongoose.model('items', itemSchema);
 module.exports = mongoose.model('users', userSchema);
 module.exports = mongoose.model('carts', cartSchema);
-module.exports = mongoose.model('history', historySchema);
+module.exports = mongoose.model('histories', historySchema);

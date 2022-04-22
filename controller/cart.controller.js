@@ -22,12 +22,24 @@ exports.getOneCart = function (req, res) {
     }, function (err, cart) {
         if (err) throw err
         console.log("getOneCart")
-        res.json(cart)
+        if (cart != null) {
+            res.json(cart)
+        } else {
+            var data = {
+                "uid": req.params.uid,
+                "items": []
+            }
+            var newCart = new carts(data)
+            newCart.save(function (err, newcart) {
+                if (err) throw err
+                res.json(newcart)
+            })
+        }
     })
 }
 
 exports.updateCart = function (req, res) {
-    console.log(req.params.id)
+    console.log("updateCart")
     var newCart = {}
     newCart = req.body
     console.log(newCart)

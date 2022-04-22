@@ -7,6 +7,7 @@ const express = require("express");
 const userController = require("./controller/user.controller");
 const itemController = require("./controller/item.controller");
 const cartController = require("./controller/cart.controller");
+const histController = require("./controller/history.controller");
 
 const app = express();
 
@@ -37,9 +38,6 @@ app.get("/users", userController.getAllUsers);
 
 // get one user 
 app.get("/users/:uid", userController.getOneUser);
-
-// login
-//app.get("/login", loginController);
 //////////////////////////////////////////////////////////
 
 
@@ -49,13 +47,16 @@ app.get("/users/:uid", userController.getOneUser);
 app.get("/items", itemController.getAllItems);
 
 // get one item 
-app.get("/items/:name", itemController.getOneItem);
+app.get("/items/:id", itemController.getOneItem);
+
+// get all item in cart
+app.get("/items/get/allitemincart", itemController.getAllItemInCart);
 
 // search item 
 app.get("/items/search/:category", itemController.searchItems);
 
 // promotion item 
-app.get("/items/promotion", itemController.promotionItems);
+app.get("/itemspromotion", itemController.promotionItems);
 //////////////////////////////////////////////////////////
 
 
@@ -69,11 +70,18 @@ app.get("/carts/:uid", cartController.getOneCart);
 
 // update carts
 app.post("/carts/update/:id", cartController.updateCart);
-
-// add to carts
-//app.post("/carts/add/:id", cartController.addToCart);
-
-// remove from carts
-//app.post("/carts/remove/:id", cartController.removeFromCart);
 //////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////
+// get all history
+app.get("/history", histController.getAllHistory);
+
+// get user history
+app.get("/history/:uid", histController.getUserHistory);
+//////////////////////////////////////////////////////////
+
+
+
 module.exports = app;
