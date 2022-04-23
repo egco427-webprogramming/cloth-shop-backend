@@ -29,8 +29,8 @@ app.use(
 // create user
 app.post("/users/create", userController.createUser);
 
-app.post("/users/update/:id", userController.updateUser);
 // update user
+app.post("/users/:id", userController.updateUser);
 
 // get all user
 app.get("/users", userController.getAllUsers);
@@ -67,7 +67,7 @@ app.get("/carts", cartController.getAllCarts);
 app.get("/carts/:uid", cartController.getOneCart);
 
 // update carts
-app.post("/carts/update/:id", cartController.updateCart);
+app.post("/carts/:id", cartController.updateCart);
 //////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////
