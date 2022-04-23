@@ -76,6 +76,9 @@ app.get("/history", histController.getAllHistory);
 
 // get user history
 app.get("/history/:uid", histController.getUserHistory);
+
+// create history
+app.post("/history/create/purchased",histController.createHistory);
 //////////////////////////////////////////////////////////
 
 module.exports = app;
