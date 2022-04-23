@@ -48,20 +48,24 @@ exports.getOneCart = function (req, res) {
 }
 
 exports.updateCart = function (req, res) {
-    try {
-        console.log("updateCart")
-        var newCart = {}
-        newCart = req.body
-        console.log(newCart)
-        carts.findOneAndUpdate(req.params.uid, newCart, {
-            new: true
-        }, function (err, cart) {
-            if (err) throw err
-            console.log(cart)
-            res.json(cart)
-        })
-    } catch (err) {
-        console.log(err)
-    }
-
-}
+  try {
+    console.log("updateCart");
+    var newCart = {};
+    newCart = req.body;
+    console.log(req.params.uid, newCart);
+    carts.findOneAndUpdate(
+      { uid: req.params.uid },
+      newCart,
+      {
+        new: true,
+      },
+      function (err, cart) {
+        if (err) throw err;
+        console.log(cart);
+        res.json(cart);
+      }
+    );
+  } catch (err) {
+    console.log(err);
+  }
+};
