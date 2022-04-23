@@ -20,49 +20,44 @@ app.use(cors());
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(
-    bodyParser.urlencoded({
-        extended: false,
-    })
+  bodyParser.urlencoded({
+    extended: false,
+  })
 );
 
-
 //////////////////////////////////////////////////////////
-// create user 
+// create user
 app.post("/users/create", userController.createUser);
 
-// update user 
-app.post("/users/update/:id", userController.updateUser);
+// update user
+app.post("/users/:id", userController.updateUser);
 
-// get all user 
+// get all user
 app.get("/users", userController.getAllUsers);
 
-// get one user 
+// get one user
 app.get("/users/:uid", userController.getOneUser);
 
 // login
 app.post("/login", userController.login);
 //////////////////////////////////////////////////////////
 
-
-
 //////////////////////////////////////////////////////////
-// get all items 
+// get all items
 app.get("/items", itemController.getAllItems);
 
-// get one item 
+// get one item
 app.get("/items/:id", itemController.getOneItem);
 
 // get all item in cart
 app.get("/items/get/allitemincart", itemController.getAllItemInCart);
 
-// search item 
+// search item
 app.get("/items/search/:category", itemController.searchItems);
 
-// promotion item 
+// promotion item
 app.get("/itemspromotion", itemController.promotionItems);
 //////////////////////////////////////////////////////////
-
-
 
 //////////////////////////////////////////////////////////
 // get all carts
@@ -72,10 +67,8 @@ app.get("/carts", cartController.getAllCarts);
 app.get("/carts/:uid", cartController.getOneCart);
 
 // update carts
-app.post("/carts/update/:id", cartController.updateCart);
+app.post("/carts/:id", cartController.updateCart);
 //////////////////////////////////////////////////////////
-
-
 
 //////////////////////////////////////////////////////////
 // get all history
@@ -84,7 +77,5 @@ app.get("/history", histController.getAllHistory);
 // get user history
 app.get("/history/:uid", histController.getUserHistory);
 //////////////////////////////////////////////////////////
-
-
 
 module.exports = app;
