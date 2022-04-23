@@ -67,7 +67,7 @@ app.get("/carts", cartController.getAllCarts);
 app.get("/carts/:uid", cartController.getOneCart);
 
 // update carts
-app.post("/carts/:id", cartController.updateCart);
+app.post("/carts/update/:uid", cartController.updateCart);
 //////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////
