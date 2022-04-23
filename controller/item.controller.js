@@ -56,6 +56,33 @@ exports.searchItems = function (req, res) {
 
 }
 
+exports.searchItemsbyKeyword = function (req, res) {
+    try {
+        var query = {
+            sort: {
+                sold: -1
+            }
+        }
+        items.find({
+                $or: [{
+                        name : { $regex: req.params.keyword, $options: 'i' }
+                    },
+                    {
+                        category: { $regex: req.params.keyword, $options: 'i' }
+                    }
+                ]
+            }, null, query,
+            function (err, item) {
+                if (err) throw err
+                console.log("searchItemsbyKeyword")
+                res.json(item)
+            })
+    } catch (err) {
+        console.log(err)
+    }
+
+}
+
 exports.promotionItems = function (req, res) {
     try {
         var query = {
