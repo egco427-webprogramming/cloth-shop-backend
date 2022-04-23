@@ -28,12 +28,26 @@ exports.getUserHistory = function (req, res) {
         }
         histories.find({
             uid: req.params.uid
-        }, null, query, function (err, cart) {
+        }, null, query, function (err, his) {
             if (err) throw err
             console.log("getUserHistory")
-            res.json(cart)
+            res.json(his)
         })
     } catch (err) {
         console.log(err)
     }
+}
+
+exports.createHistory = function (req, res) {
+    try {
+        var newHist = new histories(req.body)
+        console.log(req.body)
+        newHist.save(function (err, his) {
+            if (err) throw err
+            res.json(his)
+        })
+    } catch (err) {
+        console.log(err)
+    }
+
 }
