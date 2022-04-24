@@ -78,10 +78,10 @@ app.post("/carts/:uid", cartController.updateCart);
 app.get("/history", histController.getAllHistory);
 
 // get user history
-app.get("/history/:uid", histController.getUserHistory);
+app.get("/history/id/:uid", histController.getUserHistory);
 
 // create history
-app.post("/history/create/purchased", histController.createHistory);
+app.post("/history/purchased", histController.createHistory);
 //////////////////////////////////////////////////////////
 
 module.exports = app;
