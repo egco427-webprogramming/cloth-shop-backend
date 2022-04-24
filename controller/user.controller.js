@@ -69,23 +69,27 @@ exports.createUser = function (req, res) {
 }
 
 exports.updateUser = function (req, res) {
-    try {
-        console.log(req.params.id)
-        var newUser = {}
-        newUser = req.body
-        console.log(newUser)
-        users.findByIdAndUpdate(req.params.id, newUser, {
-            new: true
-        }, function (err, user) {
-            if (err) throw err
-            console.log(user)
-            res.json(user)
-        })
-    } catch (err) {
-        console.log(err)
-    }
-
-}
+  try {
+    console.log(req.params.id);
+    var newUser = {};
+    newUser = req.body;
+    console.log(newUser);
+    users.findOneAndUpdate(
+      { uid: req.params.id },
+      newUser,
+      {
+        new: true,
+      },
+      function (err, user) {
+        if (err) throw err;
+        console.log(user);
+        res.json(user);
+      }
+    );
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 exports.login = function (req, res) {
   try {
