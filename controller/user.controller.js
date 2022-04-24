@@ -88,34 +88,35 @@ exports.updateUser = function (req, res) {
 }
 
 exports.login = function (req, res) {
-    try {
-        users.findOne({
-            uid: req.body.uid
-        }, function (err, user) {
-            if (err) throw err
-            console.log("login")
-            if (user != null) {
-                res.json(user)
-            } else {
-                var data = {
-                    "uid": req.body.uid,
-                    "firstname": "",
-                    "lastname": "",
-                    "tel": "",
-                    "adr": "",
-                    "email": req.body.email
-                }
-                var newUser = new users(data)
-                console.log(data)
-                newUser.save(function (err, newuser) {
-                    if (err) throw err
-                    res.json(newuser)
-                })
-            }
-
-        })
-    } catch (err) {
-        console.log(err)
-    }
-
-}
+  try {
+    users.findOne(
+      {
+        uid: req.body.uid,
+      },
+      function (err, user) {
+        if (err) throw err;
+        console.log("login");
+        if (user != null) {
+          res.json(user);
+        } else {
+          var data = {
+            uid: req.body.uid,
+            firstname: req.body?.firstname || "",
+            lastname: req.body?.lastname || "",
+            tel: "",
+            adr: "",
+            email: req.body.email,
+          };
+          var newUser = new users(data);
+          console.log(data);
+          newUser.save(function (err, newuser) {
+            if (err) throw err;
+            res.json(newuser);
+          });
+        }
+      }
+    );
+  } catch (err) {
+    console.log(err);
+  }
+};

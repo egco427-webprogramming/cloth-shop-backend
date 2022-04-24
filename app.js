@@ -47,7 +47,7 @@ app.post("/login", userController.login);
 app.get("/items", itemController.getAllItems);
 
 // get one item
-app.get("/items/:id", itemController.getOneItem);
+app.get("/items/id/:id", itemController.getOneItem);
 
 // get all item in cart
 app.get("/items/get/allitemincart", itemController.getAllItemInCart);
@@ -59,7 +59,7 @@ app.get("/items/search/:category", itemController.searchItems);
 app.get("/items/search2/:keyword", itemController.searchItemsbyKeyword);
 
 // promotion item
-app.get("/itemspromotion", itemController.promotionItems);
+app.get("/items/promotion", itemController.promotionItems);
 //////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////
@@ -81,7 +81,7 @@ app.get("/history", histController.getAllHistory);
 app.get("/history/:uid", histController.getUserHistory);
 
 // create history
-app.post("/history/create/purchased",histController.createHistory);
+app.post("/history/create/purchased", histController.createHistory);
 //////////////////////////////////////////////////////////
 
 module.exports = app;
