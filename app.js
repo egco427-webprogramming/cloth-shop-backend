@@ -53,10 +53,10 @@ app.get("/items/id/:id", itemController.getOneItem);
 app.get("/items/get/allitemincart", itemController.getAllItemInCart);
 
 // search item
-app.get("/items/search/:category", itemController.searchItems);
+app.get("/items/category/:category", itemController.searchItems);
 
 // search item2
-app.get("/items/search2/:keyword", itemController.searchItemsbyKeyword);
+app.get("/items/keyword/:keyword", itemController.searchItemsbyKeyword);
 
 // promotion item
 app.get("/items/promotion", itemController.promotionItems);
