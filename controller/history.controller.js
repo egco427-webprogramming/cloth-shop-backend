@@ -6,7 +6,7 @@ exports.getAllHistory = function (req, res) {
     try {
         var query = {
             sort: {
-                date: 1
+                date: -1
             }
         }
         histories.find({}, null, query, function (err, his) {
@@ -23,7 +23,7 @@ exports.getUserHistory = function (req, res) {
     try {
         var query = {
             sort: {
-                date: 1
+                date: -1
             }
         }
         histories.find({
