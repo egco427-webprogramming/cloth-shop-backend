@@ -28,7 +28,7 @@ const cartSchema = new Schema({
 const historySchema = new Schema({
   uid: { type: String },
   date: { type: Date },
-  items: [{item : String,unit : String}],
+  items: [{item : String, promotion:String, unit : String}],
   price: { type: String }
 });
 
