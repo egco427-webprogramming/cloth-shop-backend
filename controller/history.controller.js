@@ -42,10 +42,21 @@ exports.createHistory = function (req, res) {
     try {
         var newHist = new histories(req.body)
         console.log(req.body)
-        newHist.save(function (err, his) {
-            if (err) throw err
-            res.json(his)
-        })
+        var invalid = false
+        req.body.items.forEach(data => {
+            if (data.unit <= 0) {
+                invalid = true
+            }
+        });
+        if (!invalid) {
+            newHist.save(function (err, his) {
+                if (err) throw err
+                res.json(his)
+            })
+        } else{
+            console.log("invalid input")
+            res.json("invalid input")
+        }
     } catch (err) {
         console.log(err)
     }
