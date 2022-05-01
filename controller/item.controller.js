@@ -87,7 +87,7 @@ exports.promotionItems = function (req, res) {
     try {
         var query = {
             sort: {
-                promotion: -1
+                sold: -1
             }
         }
         items.find({
@@ -97,6 +97,7 @@ exports.promotionItems = function (req, res) {
         }, null, query, function (err, item) {
             if (err) throw err
             console.log("promotionItems")
+            item.sort((a,b) => Number(b.sold)-Number(a.sold))
             res.json(item)
         })
     } catch (err) {
